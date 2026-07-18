@@ -1,0 +1,11 @@
+[{:itonami.blueprint/social-impact [:worker-safety :electrical-safety :industrial-continuity]
+  :itonami.blueprint/domain :manufacturing/electrical-electronic-equipment-assembly-scheduling-logistics-coordination
+  :itonami.blueprint/required-technologies [:robotics :identity :audit-ledger]
+  :itonami.blueprint/isco-08 "8212"
+  :itonami.blueprint/name "Electrical and Electronic Equipment Assembly Line Scheduling and Logistics Coordination Practice"
+  :itonami.blueprint/governor :elec-assembly-coord-governor
+  :itonami.blueprint/robotics true
+  :db/id -1
+  :itonami.blueprint/status :public-oss
+  :itonami.blueprint/id "cloud-itonami-isco-8212"
+  :itonami.blueprint/license "AGPL-3.0-or-later"}]
