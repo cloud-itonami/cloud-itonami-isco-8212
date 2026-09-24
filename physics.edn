@@ -1,0 +1,34 @@
+;; What this vertical's robot physically does, declared for
+;; kotoba.robotics.process (kotoba-lang/robotics). `kbb -M:physics` runs it.
+;;
+;; README "Robotics premise": a line scheduling/logistics coordination robot
+;; does crew scheduling, production/inventory logging and electronic
+;; components supply for an electrical/electronic assembly crew; it never does
+;; the assembly work. Its physical work is component logistics: loading
+;; component reels onto the feeder rack of a placement line, and the reel
+;; cart run from the component store.
+;;
+;; Every number without a cited source is marked `estimate` in its :basis.
+;; Replacing an estimate with a sourced value is this bot's growth work.
+{:physics/schema "itonami.physical-ai.spec.v1"
+ :repo "cloud-itonami/cloud-itonami-isco-8212"
+ :cases
+ [{:id :reel-to-feeder-rack
+   :kind :manipulator
+   :procedure "small arm lifts a component reel (or a stack of reels) from the cart onto the placement line's upper feeder rack"
+   :params {:l1-m 0.30 :l2-m 0.25 :m1-kg 2.0 :m2-kg 1.2
+            :from [0.40 0.05] :to [0.15 0.45] :duration-s 1.0 :steps 400}
+   :sweep {:param :payload-kg :values [0.3 0.6 1.0 1.5 2.0]}
+   :quantity :peak-tau1-nm
+   :limit {:max 15.0 :basis "estimate: continuous shoulder torque of a small (~3 kg payload class) table-top collaborative arm"}
+   :boundary {:lo 0.05 :hi 10.0}}
+  {:id :reel-cart-from-store
+   :kind :transport
+   :procedure "AMR brings a reel cart from the moisture-controlled component store to the line"
+   :params {:mass-kg 40.0 :payload-kg 40.0 :v-max-mps 1.2 :a-max-mps2 0.5
+            :brake-decel-mps2 0.8 :drive-force-n 150.0 :crr 0.02
+            :cog-height-m 0.60 :support-half-length-m 0.25 :max-time-s 1200.0}
+   :sweep {:param :distance-m :values [20.0 40.0 60.0 80.0 100.0]}
+   :quantity :cycle-time-s
+   :limit {:max 60.0 :basis "estimate: a reel swap must be staged within ~1 min of a feeder low-component warning"}
+   :boundary {:lo 5.0 :hi 300.0}}]}
