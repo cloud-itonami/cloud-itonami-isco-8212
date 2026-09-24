@@ -1,5 +1,5 @@
 (ns elecassemblycoord.governor-test
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.test :refer [deftest is testing]]
             [elecassemblycoord.store :as store]
             [elecassemblycoord.advisor :as advisor]
             [elecassemblycoord.governor :as governor]))
