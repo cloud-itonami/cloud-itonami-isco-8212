@@ -1,5 +1,5 @@
 (ns elecassemblycoord.actor-test
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.test :refer [deftest is testing]]
             [elecassemblycoord.actor :as actor]
             [elecassemblycoord.store :as store]))
 
