@@ -1,7 +1,7 @@
 (ns elecassemblycoord.store
   "SSoT for the ISCO-08 8212 electrical and electronic equipment
   assemblers assembly-line scheduling/logistics coordination actor
-  (itonami actor pattern, ADR-2607121000 / CLAUDE.md Actors section;
+  (itonami actor pattern, ADR-2607121000 / AGENTS.md Actors section;
   README's 'Robotics premise' — a line scheduling/logistics
   coordination robot performs crew scheduling, production-run/
   inventory/progress-record logging and electronic-components-stock
